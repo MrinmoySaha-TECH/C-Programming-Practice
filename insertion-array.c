@@ -7,13 +7,13 @@ void display ( int arr[],int n){
     printf("\n");
 }
 
-void dataInsertion(int arr, int size, int capacity, int element, int index){
-    if (size > capacity){
+int dataInsertion(int arr[], int size, int capacity, int element, int index){
+    if (size >= capacity){
         printf("Data Insertion Not Possible.");
         return 0 ;
     }
 
-    for (int i = size - 1; i >= size; i--)
+    for (int i = size - 1; i >= index; i--)
     {
         arr[i+1] = arr[i];
 
@@ -25,10 +25,13 @@ void dataInsertion(int arr, int size, int capacity, int element, int index){
 
 int main(){
     int arr[100] = {1,2,3,4,6};
-    int size = 5, capacity = 100, element = 5, index = 3;
+    int size = 5, capacity = 100, element = 5, index = 4;
     display(arr,size);
-    dataInsertion( arr, size, capacity, element, index);
+    if(dataInsertion( arr, size, capacity, element, index))
+    {
+        size++;
+    }
     display(arr,size);
-    size += 1;
+    
     return 0;
 }
